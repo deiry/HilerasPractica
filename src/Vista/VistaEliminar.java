@@ -5,6 +5,11 @@
  */
 package Vista;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
 /**
  *
  * @author DEIRY
@@ -37,11 +42,14 @@ public class VistaEliminar extends javax.swing.JPanel {
         borradoEditado = new javax.swing.JButton();
         Respuesta = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel4.setText("Eliminar Hilera Completa?");
 
         RespuestaBorrado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Respuesta", "Si", "No" }));
         RespuestaBorrado.setEnabled(false);
 
+        jPanel14.setBackground(new java.awt.Color(255, 255, 255));
         jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder("Editar Borrado"));
 
         jLabel5.setText("Posicion Inicial");
@@ -164,4 +172,55 @@ public class VistaEliminar extends javax.swing.JPanel {
     private javax.swing.JTextField numerElementos;
     private javax.swing.JTextField valInicial;
     // End of variables declaration//GEN-END:variables
+    
+    /**
+ * Metodo que recupera un objeto tipo JTextField  con name valInicial 
+ * @return un objeto tipo JTextField
+ */
+public JTextField retornaValInicialBorrado()
+{
+    return valInicial;
+}
+
+/**
+ * Metodo que recupera un objeto tipo JTextField con name numerElementos 
+ * @return un objeto tipo JTextField
+ */
+
+public JTextField retornaNumeroElementosBorrado()
+{
+    return numerElementos;
+}
+
+
+/**
+ * Metodo que recupera un objeto tipo JComboBox con name RespuestaBorrado 
+ * @return  un objeto tipo JComboBox
+ */
+public JComboBox retornaComboBorrado()
+{
+    return RespuestaBorrado;
+    
+}
+
+/**
+ * Metodo que recupera un objeto tipo JButton con name borradoEditado
+ * @return un objeto tipo JButton
+ */
+
+public JButton retornaBotonBorrado()
+{
+    return borradoEditado;
+}
+
+/**
+ * Metodo que recupera un objeto tipo JLabel con name Respuesta  
+ * @return un objeto tipo JLabel
+ */
+
+public JLabel retornaRespuesta()
+{
+    return Respuesta;
+}
+
 }

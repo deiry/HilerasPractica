@@ -32,11 +32,12 @@ public class Hilera extends Dlist {
         return (((x > 64) && (x < 92)) || ((x > 96) && (x < 123)) || ((x > 47) && (x < 58)));
     }
 
-   
- /**
-  * metodo que cuenta el numero de nodos que conformar la lista hilera
-  * @return retorna un entero con el numero de nodos pertenecientes a la lista
-  */
+    /**
+     * metodo que cuenta el numero de nodos que conformar la lista hilera
+     *
+     * @return retorna un entero con el numero de nodos pertenecientes a la
+     * lista
+     */
     public int HileraLength() {
         Dnode p;
         int contador = 0;
@@ -50,14 +51,18 @@ public class Hilera extends Dlist {
 
     }
 
-    
     /**
-     * metodo que borra de la lista un determinado numero de nodos con base a la posicion inicial y numero de caractares y apartir de este posicion inical x
-     * @param x Posicion inicial apartir de donde se van a borrar los nodos de la lista
+     * metodo que borra de la lista un determinado numero de nodos con base a la
+     * posicion inicial y numero de caractares y apartir de este posicion inical
+     * x
+     *
+     * @param x Posicion inicial apartir de donde se van a borrar los nodos de
+     * la lista
      * @param y Numero de nodos que se cuenta apartir de la posicion inicial x
-     * @return  Retorna un entero en cual indica 1 si el primer parametro es invalido,2 si el segundo parametro es invalido,3 si se ejecuto correctamente
+     * @return Retorna un entero en cual indica 1 si el primer parametro es
+     * invalido,2 si el segundo parametro es invalido,3 si se ejecuto
+     * correctamente
      */
-    
     public int borrarString(int x, int y)// x posiciones inicial
     {
         int numNodos = this.HileraLength();
@@ -65,7 +70,7 @@ public class Hilera extends Dlist {
             System.out.println("Parametro Invalido :" + x);
             return 1;
         }
-        if (y < 0 || y > numNodos-x+1) {
+        if (y < 0 || y > numNodos - x + 1) {
             System.out.println("Parametro Invalido: " + y);
             return 2;
         }
@@ -88,9 +93,17 @@ public class Hilera extends Dlist {
 
         while (k <= y) {
 
+            if (p == getFirstNode()) {
+                setFirstNode(p.getLd());
+                getFirstNode().setLi(null);
+            } else {
+                this.disconnect(p);
+                disconnect(p);
+                setLongitud(getLongitud() - 1);
+            }
+
             k++;
-            disconnect(p);
-            setLongitud(getLongitud() - 1);
+
             //p = q.getLd();
             p = p.getLd();
 
@@ -98,7 +111,6 @@ public class Hilera extends Dlist {
         return 3;
     }
 
-    
     /**
      * Metodo que vacia la hilera
      */
@@ -108,11 +120,10 @@ public class Hilera extends Dlist {
         setLongitud(0);
 
     }
-    
+
     /**
      * Metod que invierte el orden de la hilera
      */
-
     public void invertirHilera() {
 
         Dnode p, q;
@@ -220,70 +231,71 @@ public class Hilera extends Dlist {
         tCopy.getLastNode().setLd(p);
     }
 
-    
     /**
-     * Metodo que reemplaza una Hilera dentro de otra apartir de la posicion i hasta j caracteres
-     * @param i Parametro que indica la posicion incial a partir del cual se empiza hacer la modificacion
-     * @param j Parametro que indica el numero de caracters apartir de la posicion incial para modificar
-     * @param t Parametro que indica la hiler aque se va a insertar dentro de la lista
+     * Metodo que reemplaza una Hilera dentro de otra apartir de la posicion i
+     * hasta j caracteres
+     *
+     * @param i Parametro que indica la posicion incial a partir del cual se
+     * empiza hacer la modificacion
+     * @param j Parametro que indica el numero de caracters apartir de la
+     * posicion incial para modificar
+     * @param t Parametro que indica la hiler aque se va a insertar dentro de la
+     * lista
      */
     public void modificarHilera2(int i, int j, Hilera t) {
         Dnode p, tp, aux;
         int k = 1;
 
         p = findNode(i);
-        
-        
-          if (i < 1 || i >this.getLongitud()) {
+
+        if (i < 1 || i > this.getLongitud()) {
             //System.out.println("Parametro Invalido :" + i);
-              JOptionPane.showMessageDialog(null,"Parametro Invalido :" + i);
-            return ;
-        }
-        if (j < 0 || j > this.getLongitud()-i+1) {
-            System.out.println("Parametro Invalido: " + j);
-            JOptionPane.showMessageDialog(null,"Parametro Invalido :" + j);
+            JOptionPane.showMessageDialog(null, "Parametro Invalido :" + i);
             return;
         }
-   
-    
-        tp = t.getFirstNode();
-         aux = p.getLi();
-       
-       while (k <=j) {
-           
-      
-           if(p ==getFirstNode())
-           {
-               setFirstNode(p.getLd());
-               getFirstNode().setLi(null);
-           }
-           
-           else{
-                    this.disconnect(p);
-           }
-            p= p.getLd();
-           k++;
-       }
-         
-        
-   
-     while (!isTheEnd(tp)) {
-         Dnode x = new Dnode(tp.getDato());
-          connect(x, aux);
-        tp = tp.getLd();
-        aux = x;
+        if (j < 0 || j > this.getLongitud() - i + 1) {
+            System.out.println("Parametro Invalido: " + j);
+            JOptionPane.showMessageDialog(null, "Parametro Invalido :" + j);
+            return;
+        }
 
-       }
+        tp = t.getFirstNode();
+        aux = p.getLi();
+        
+
+        while (k <= j) {
+
+            if (p == getFirstNode()) {
+               this.setFirstNode(p.getLd());
+                this.getFirstNode().setLi(null);
+                
+              
+            } else {
+                this.disconnect(p);
+            }
+            p = p.getLd();
+            k++;
+        }
+
+        while (!isTheEnd(tp)) {
+            Dnode x = new Dnode(tp.getDato());
+           
+            connect(x, aux);
+            tp = tp.getLd();
+            aux = x;
+
+        }
 
     }
-    
+
     /**
-     * El metodo subString permite obtener de la lista una subhilera desde una posicion inicial hasta numero determinando de caracteres
+     * El metodo subString permite obtener de la lista una subhilera desde una
+     * posicion inicial hasta numero determinando de caracteres
+     *
      * @param i posicion inicial de la hilera
      * @param j numero de caracteres a tomar de la hilera
-     * @return  retorna una hilera auxilar al this
+     * @return retorna una hilera auxilar al this
      */
-
     public Hilera subString(int i, int j) {
 
         Dnode p, aux, q;

@@ -5,6 +5,9 @@
  */
 package Vista;
 
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 /**
  *
  * @author DEIRY
@@ -16,6 +19,45 @@ public class VistaInsertar extends javax.swing.JPanel {
      */
     public VistaInsertar() {
         initComponents();
+
+    }
+
+    /**
+     * Metodo que recupera un objeto tipo JTextField con name CuadroString
+     *
+     * @return retorna un objeto JTextField
+     */
+    public JTextField retornaCuadroString() {
+        return CuadroString;
+    }
+
+    /**
+     * Metdo que recupera un objeto tipo JButton con name cargaString
+     *
+     * @return retorna un objeto tipo JButton
+     */
+    public JButton retornaBotonCargaString() {
+        return cargaString;
+    }
+
+    /**
+     * Metodo que retorna el cuadro de texto para agregar una hilera a la lista
+     * orignal
+     *
+     * @return Cuadro de texto con el string a agregar
+     */
+    public JTextField retornaCuadroAgregar() {
+        return CuadroAgregar;
+    }
+
+    /**
+     * Metodo que retorna el boton para para agregar una hilera a la lista
+     * orignal
+     *
+     * @return Boton con el string a agregar
+     */
+    public JButton retornaBotonAgregar() {
+        return agregarString;
     }
 
     /**
@@ -30,10 +72,26 @@ public class VistaInsertar extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         CuadroString = new javax.swing.JTextField();
         cargaString = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        CuadroAgregar = new javax.swing.JTextField();
+        agregarString = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setText("Ingresar Hilera Original");
 
+        cargaString.setBackground(new java.awt.Color(131, 196, 76));
         cargaString.setText("Ingresar");
+        cargaString.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel2.setText("Agregar Hilera orginal");
+
+        CuadroAgregar.setEnabled(false);
+
+        agregarString.setBackground(new java.awt.Color(131, 196, 76));
+        agregarString.setText("Agregar");
+        agregarString.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        agregarString.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -41,33 +99,52 @@ public class VistaInsertar extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(CuadroAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(CuadroString, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(113, 113, 113)
+                                .addComponent(jLabel2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(116, 116, 116)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(94, 94, 94)
+                                .addComponent(CuadroString, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(136, 136, 136)
+                                .addComponent(cargaString, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(cargaString)))
-                .addContainerGap(144, Short.MAX_VALUE))
+                        .addGap(125, 125, 125)
+                        .addComponent(agregarString, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel1)
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(CuadroString, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(cargaString)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addComponent(cargaString, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(CuadroAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(agregarString, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CuadroAgregar;
     private javax.swing.JTextField CuadroString;
+    private javax.swing.JButton agregarString;
     private javax.swing.JButton cargaString;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

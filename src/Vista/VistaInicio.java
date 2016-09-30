@@ -5,8 +5,15 @@
  */
 package Vista;
 
+import java.awt.Color;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -14,9 +21,15 @@ import javax.swing.JTabbedPane;
  */
 public class VistaInicio extends javax.swing.JFrame {
 
-    JTabbedPane panel;
-    VistaInsertar vistaInsert;
-    VistaEliminar vistaEliminar;
+    private JTabbedPane panel;
+    private VistaInsertar vistaInsert;
+    private VistaEliminar vistaEliminar;
+    private VistaInvertir vistaInvertir;
+    private VistaModificar vistaModificar;
+    private VistaOrdenar vistaOrdenar;
+    private VistaSubhilera vistaSub;
+    private VistaPalindromo vistaPalindromo;
+    private VistaAnagrama vistaAnagrama;
 
     /**
      * Creates new form VistaInicio
@@ -26,11 +39,26 @@ public class VistaInicio extends javax.swing.JFrame {
         panel = new JTabbedPane();
         vistaInsert = new VistaInsertar();
         vistaEliminar = new VistaEliminar();
+        vistaModificar = new VistaModificar();
+        vistaInvertir = new VistaInvertir();
+        vistaOrdenar = new VistaOrdenar();
+        vistaSub = new VistaSubhilera();
+        vistaPalindromo = new VistaPalindromo();
+        vistaAnagrama = new VistaAnagrama();
+        panelMundo.setBackground(Color.white);
+
+        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/anagrama.png")), vistaAnagrama, "Verificar si Hilera es anagrama");
+        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/palindro.png")), vistaPalindromo, "Verificar Hilera si es palindromo");
+        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/subHilera.png")), vistaSub, "Extraer SubHilera");
+        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/ordenar.png")), vistaOrdenar, "Ordenar Hilera");
         panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/insert.png")), vistaInsert, "Insertar Hilera");
         panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/delete.png")), vistaEliminar, "Eliminar Hilera");
-        mostrarPaneles();
+        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/modify.png")), vistaModificar, "Modificar Hilera");
+        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/reverse.png")), vistaInvertir, "Invertir Hilera");
+        panel.setSelectedIndex(4);
+        //    mostrarPaneles();
         this.panelMundo.add(panel);
-
+        
     }
 
     public void paintPanel() {
@@ -38,9 +66,49 @@ public class VistaInicio extends javax.swing.JFrame {
         this.panelMundo.revalidate();
     }
 
+    /**
+     * La situiente funcion limpia un panel JPanel para posteriormente dibujar
+     * el panel que se necesita
+     *
+     * @param jp panel que se va limpiar
+     */
+    public void cleanPanel(JPanel jp) {
+        jp.removeAll();
+        jp.repaint();
+        jp.revalidate();
+    }
+
+    /**
+     * La siguiente funcion agregar el panel que se va usar jp en el panel
+     * JPanelWork
+     *
+     * @param jp es el panel que se va agregar en el panel JpOri
+     */
+    public void setPanel(JPanel jp, JPanel jpOri) {
+        jpOri.add(jp);
+        jpOri.repaint();
+        jpOri.revalidate();
+    }
+
     public void mostrarPaneles() {
+        cleanPanel(panelMundo);
+        setPanel(vistaInsert, panelMundo);
         vistaInsert.setVisible(true);
+        /*  paintPanel();
         vistaEliminar.setVisible(true);
+        paintPanel();
+        vistaInvertir.setVisible(true);
+        paintPanel();
+        vistaModificar.setVisible(true);
+        paintPanel();
+        vistaOrdenar.setVisible(true);
+        paintPanel();
+        vistaSub.setVisible(true);
+        paintPanel();
+        vistaPalindromo.setVisible(true);
+        paintPanel();
+        vistaAnagrama.setVisible(true);
+        paintPanel();*/
     }
 
     /**
@@ -53,35 +121,61 @@ public class VistaInicio extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        AreaVisualizacion = new javax.swing.JTextArea();
+        panelComentario = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        labelRespuesta = new javax.swing.JLabel();
         panelMundo = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        AreaVisualizacion.setColumns(20);
+        AreaVisualizacion.setRows(5);
+        jScrollPane1.setViewportView(AreaVisualizacion);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 329, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        panelComentario.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 712, Short.MAX_VALUE)
+        jLabel1.setText("Observaciones");
+
+        javax.swing.GroupLayout panelComentarioLayout = new javax.swing.GroupLayout(panelComentario);
+        panelComentario.setLayout(panelComentarioLayout);
+        panelComentarioLayout.setHorizontalGroup(
+            panelComentarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelComentarioLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(panelComentarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelRespuesta)
+                    .addComponent(jLabel1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
+        panelComentarioLayout.setVerticalGroup(
+            panelComentarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelComentarioLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(labelRespuesta)
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         panelMundo.setBackground(new java.awt.Color(255, 255, 255));
@@ -95,23 +189,22 @@ public class VistaInicio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelMundo, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(panelComentario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 9, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(panelMundo, javax.swing.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelMundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelMundo, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelComentario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -154,8 +247,226 @@ public class VistaInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea AreaVisualizacion;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelRespuesta;
+    private javax.swing.JPanel panelComentario;
     private javax.swing.JPanel panelMundo;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * Metodo que recupera un objeto tipo JTextField con name CuadroString
+     *
+     * @return retorna un objeto JTextField
+     */
+    public JTextField retornaCuadroString() {
+        System.out.println("vista cuadro" + vistaInsert.retornaCuadroString());
+        return vistaInsert.retornaCuadroString();
+    }
+
+    /**
+     * Metdo que recupera un objeto tipo JButton con name cargaString
+     *
+     * @return retorna un objeto tipo JButton
+     */
+    public JButton retornaBotonCargaString() {
+        return vistaInsert.retornaBotonCargaString();
+    }
+
+    /**
+     * Metodo que recupera un objeto tipo JTextArea con name AreaVisualizacion
+     *
+     * @return retorna un objeto tipo JTextArea
+     */
+    public JTextArea retornaAreaVisualizacion() {
+        return AreaVisualizacion;
+    }
+
+    /**
+     * Metodo que recupera un objeto tipo JTextField con name valInicial
+     *
+     * @return un objeto tipo JTextField
+     */
+    public JTextField retornaValInicialBorrado() {
+        return vistaEliminar.retornaValInicialBorrado();
+    }
+
+    /**
+     * Metodo que recupera un objeto tipo JTextField con name numerElementos
+     *
+     * @return un objeto tipo JTextField
+     */
+    public JTextField retornaNumeroElementosBorrado() {
+        return vistaEliminar.retornaNumeroElementosBorrado();
+    }
+
+    /**
+     * Metodo que recupera un objeto tipo JComboBox con name RespuestaBorrado
+     *
+     * @return un objeto tipo JComboBox
+     */
+    public JComboBox retornaComboBorrado() {
+        return vistaEliminar.retornaComboBorrado();
+
+    }
+
+    /**
+     * Metodo que recupera un objeto tipo JButton con name borradoEditado
+     *
+     * @return un objeto tipo JButton
+     */
+    public JButton retornaBotonBorrado() {
+        return vistaEliminar.retornaBotonBorrado();
+    }
+
+    /**
+     * Metodo que recupera un objeto tipo JLabel con name Respuesta
+     *
+     * @return un objeto tipo JLabel
+     */
+    public JLabel retornaRespuesta() {
+        return vistaEliminar.retornaRespuesta();
+    }
+
+    /**
+     * Metodo que recupera un objeto tipo JButton con name VerificaPalindromo
+     *
+     * @return un objeto tipo JButton
+     */
+    public JButton retornaBotonPalindromo() {
+        return vistaPalindromo.retornaBotonPalindromo();
+    }
+
+    /**
+     * Metodo que recupera un objeto tipo JButton con name BotonOrdenar
+     *
+     * @return un objeto tipo JButton
+     */
+    public JButton retornaBotonOrdenar() {
+        return vistaOrdenar.retornaBotonOrdenar();
+    }
+
+    /**
+     * Metodo que recupera un objeto tipo JTextField con name cuadroAnagrama
+     *
+     * @return un objeto tipo JTextField
+     */
+    public JTextField retornaCuadroAnagrama() {
+        return vistaAnagrama.retornaCuadroAnagrama();
+    }
+
+    /**
+     * Metodo que recupera un objeto tipo JButton con name botonAnagrama
+     *
+     * @return un objeto tipo JButton
+     */
+    public JButton retornaBotonAngrama() {
+        return vistaAnagrama.retornaBotonAngrama();
+    }
+
+    /**
+     * Metodo que recupera un objeto tipo JButton con name botonInvertir
+     *
+     * @return un objeto tipo JButton
+     */
+    public JButton retornaBotonInvertir() {
+        return vistaInvertir.retornaBotonInvertir();
+    }
+
+    /**
+     * Metodo que recupera un objeto tipo JButton con name botonModificar
+     *
+     * @return un objeto tipo JButton
+     */
+    public JButton retornaBotonModificar() {
+        return vistaModificar.retornaBotonModificar();
+    }
+
+    /**
+     * Metodo que recupera un objeto tipo JTextField con name cuadroModificar
+     *
+     * @return un objeto tipo JTextField
+     */
+    public JTextField retornaCuadroModificar() {
+        return vistaModificar.retornaCuadroModificar();
+    }
+
+    /**
+     * Metodo que recupera un objeto tipo JTextField con name cuadroPosModicar
+     *
+     * @return un objeto tipo JTextField
+     */
+    public JTextField retornaPosModificar() {
+        return vistaModificar.retornaPosModificar();
+    }
+
+    /**
+     * Metodo que recupera un objeto tipo JTextField con name
+     * cuadroCantModificar
+     *
+     * @return un objeto tipo JTextField
+     */
+    public JTextField retornaCantModificar() {
+        return vistaModificar.retornaCantModificar();
+    }
+
+    /**
+     * Metodo que recupera un objeto tipo JTextField con name
+     * posicionInicialSubString
+     *
+     * @return un objeto tipo JTextField
+     */
+    public JTextField retornaPosicionInicialSubString() {
+        return vistaSub.retornaPosicionInicialSubString();
+    }
+
+    /**
+     * Metodo que recupera un objeto tipo JTextField con name
+     * numPosicionSubString
+     *
+     * @return un objeto tipo JTextField
+     */
+    public JTextField retornaNumPosicionesSubString() {
+        return vistaSub.retornaNumPosicionesSubString();
+    }
+
+    /**
+     * Metodo que recupera un objeto tipo JButton con name ejecutaSubString
+     *
+     * @return un objeto tipo JButton
+     */
+    public JButton retornaBotoEjecutarSubString() {
+        return vistaSub.retornaBotoEjecutarSubString();
+    }
+
+    /**
+     * Metodo para mostrar la respuesta en el panel de observaciones
+     *
+     * @return Obejto tipo JLabel
+     */
+    public JLabel retornaRespuestaCom() {
+        return labelRespuesta;
+    }
+
+    /**
+     * Metodo que retorna el cuadro de texto para agregar una hilera a la lista
+     * orignal
+     *
+     * @return Cuadro de texto con el string a agregar
+     */
+    public JTextField retornaCuadroAgregar() {
+        return vistaInsert.retornaCuadroAgregar();
+    }
+
+    /**
+     * Metodo que retorna el boton para para agregar una hilera a la lista
+     * orignal
+     *
+     * @return Boton con el string a agregar
+     */
+    public JButton retornaBotonAgregar() {
+        return vistaInsert.retornaBotonAgregar();
+    }
 }

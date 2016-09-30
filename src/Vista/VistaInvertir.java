@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author DEIRY
@@ -17,6 +19,17 @@ public class VistaInvertir extends javax.swing.JPanel {
     public VistaInvertir() {
         initComponents();
     }
+    
+    
+/**
+ * Metodo que recupera un objeto tipo JButton con name botonInvertir
+ * @return un objeto tipo JButton
+ */
+
+public JButton retornaBotonInvertir(){
+    return botonInvertir;
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,30 +41,42 @@ public class VistaInvertir extends javax.swing.JPanel {
     private void initComponents() {
 
         botonInvertir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         botonInvertir.setText("Invertir Hilera");
         botonInvertir.setEnabled(false);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Recursos/InvertirEx.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(142, 142, 142)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(39, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonInvertir)
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addGap(118, 118, 118))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(190, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
+                .addComponent(jLabel1)
+                .addGap(48, 48, 48)
                 .addComponent(botonInvertir)
-                .addGap(84, 84, 84))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonInvertir;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

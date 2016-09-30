@@ -2,14 +2,16 @@ package Controlador;
 
 import Modelo.Hilera;
 import Vista.FormularioPrincipal;
+import Vista.VistaInicio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 public class controlador implements ActionListener {
 
-    private FormularioPrincipal view;
+    //  private FormularioPrincipal view;
     private Hilera model;
+    private VistaInicio view;
 
     /**
      * Constructor de la controlador
@@ -19,7 +21,7 @@ public class controlador implements ActionListener {
      * @param model Segundo Parametro: objeto tipo Hilera que controla las
      * operacion dentro de la lista
      */
-    public controlador(FormularioPrincipal vista, Hilera model) {
+    public controlador(VistaInicio vista, Hilera model) {
         this.view = vista;
         this.model = model;
     }
@@ -31,6 +33,8 @@ public class controlador implements ActionListener {
     public void cargarAtributos() {
         this.view.retornaBotonCargaString().setActionCommand("GuardaCadena");
         this.view.retornaBotonCargaString().addActionListener(this);
+        this.view.retornaBotonAgregar().setActionCommand("AgregarHilera");
+        this.view.retornaBotonAgregar().addActionListener(this);
         this.view.retornaComboBorrado().setActionCommand("PreguntaBorrado");
         this.view.retornaComboBorrado().addActionListener(this);
         this.view.retornaBotonBorrado().setActionCommand("BorrarCharHilera");
@@ -84,11 +88,17 @@ public class controlador implements ActionListener {
         if (comando.equals("GuardaCadena")) //Guarda String como lista doble
         {
             String dato;
-            JOptionPane.showMessageDialog(null, "Gurdando String");
-            model.insertHilera(this.view.retornaCuadroString().getText());
+            String cadenaNueva = this.view.retornaCuadroString().getText();
 
+            if (cadenaNueva.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Campo vacio");
+                return;
+            }
+            JOptionPane.showMessageDialog(null, "Gurdando String");
+            model.insertHilera(cadenaNueva);
             dato = model.imprimirLd();
             //this.view.retornaAreaVisualizacion().setText("");
+
             this.view.retornaAreaVisualizacion().setText(dato);
             this.view.retornaCuadroString().setEnabled(false);
             this.view.retornaBotonCargaString().setEnabled(false);
@@ -104,7 +114,19 @@ public class controlador implements ActionListener {
             this.view.retornaPosicionInicialSubString().setEnabled(true);
             this.view.retornaBotoEjecutarSubString().setEnabled(true);
             this.view.retornaBotonAngrama().setEnabled(true);
+            this.view.retornaBotonAgregar().setEnabled(true);
+            this.view.retornaCuadroAgregar().setEnabled(true);
 
+        }
+
+        if (comando.equals("AgregarHilera")) {
+           String cadenaNueva = this.view.retornaCuadroAgregar().getText();
+            if (cadenaNueva.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Campo vacio");
+                return;
+            }
+            model.insertHilera(cadenaNueva);
+            this.view.retornaAreaVisualizacion().append(model.imprimirLd());
         }
 
         if (comando.equals("PreguntaBorrado"))///Borra Strin...o parte de el
@@ -114,7 +136,6 @@ public class controlador implements ActionListener {
                 this.view.retornaValInicialBorrado().setEnabled(false);
                 this.view.retornaNumeroElementosBorrado().setEnabled(false);
                 this.view.retornaBotonBorrado().setEnabled(false);
-               
 
                 //JOptionPane.showConfirmDialog(null, "Esta Seguro de eliminar Hilera?", "Warning", dialogButton);
                 int response = JOptionPane.showConfirmDialog(null, "Esta Seguro de eliminar Hilera?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -137,16 +158,15 @@ public class controlador implements ActionListener {
                     this.view.retornaBotoEjecutarSubString().setEnabled(false);
                     this.view.retornaBotonPalindromo().setEnabled(false);
                     this.view.retornaBotonAngrama().setEnabled(false);
+                    this.view.retornaBotonAgregar().setEnabled(false);
+                    this.view.retornaCuadroAgregar().setEnabled(false);
+                    this.view.retornaCuadroString().setText("");
 
-                }
-                else if(response==JOptionPane.NO_OPTION)
-                {
+                } else if (response == JOptionPane.NO_OPTION) {
                     JOptionPane.showMessageDialog(null, "Conservando Hilera Intacta!!!");
                 }
 
-            } else 
-            
-            {
+            } else {
                 this.view.retornaValInicialBorrado().setEnabled(true);
                 this.view.retornaNumeroElementosBorrado().setEnabled(true);
                 this.view.retornaBotonBorrado().setEnabled(true);
@@ -185,10 +205,10 @@ public class controlador implements ActionListener {
             respuesta = this.model.esPalindromo();
             if (respuesta == true) {
 
-                this.view.retornaRespuestaPalindromo().setText("Felicitaciones Su Hilera es Palindromo");
+                this.view.retornaRespuestaCom().setText("Felicitaciones Su Hilera es Palindromo");
 
             } else {
-                this.view.retornaRespuestaPalindromo().setText("Lo sentimos  Su Hilera no es Palindromo");
+                this.view.retornaRespuestaCom().setText("Lo sentimos  Su Hilera no es Palindromo");
 
             }
         }

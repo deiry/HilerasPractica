@@ -20,19 +20,18 @@ public class Main {
     public static void main(String[] args) {
         
         
-   /*
-        FormularioPrincipal view=new FormularioPrincipal();
+   
+      //  FormularioPrincipal view=new FormularioPrincipal();
         Hilera model=new Hilera();
-        
+        VistaInicio view = new VistaInicio();
         
         controlador controller=new  controlador(view, model);
         controller.cargarAtributos();
-        controller.mostrar();*/
+        controller.mostrar();
        
  
      
-      //  new VistaPrincipal().setVisible(true);
-      new VistaInicio().setVisible(true);
+      
         
     }
     
