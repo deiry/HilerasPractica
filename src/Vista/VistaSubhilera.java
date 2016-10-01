@@ -71,6 +71,7 @@ public JButton retornaBotoEjecutarSubString()
         before = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(400, 350));
 
         jPanel22.setBackground(new java.awt.Color(255, 255, 255));
         jPanel22.setBorder(javax.swing.BorderFactory.createTitledBorder("SubHilera"));
