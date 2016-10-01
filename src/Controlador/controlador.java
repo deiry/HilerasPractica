@@ -3,8 +3,11 @@ package Controlador;
 import Modelo.Hilera;
 import Vista.FormularioPrincipal;
 import Vista.VistaInicio;
+import java.awt.Component;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 public class controlador implements ActionListener {
@@ -12,6 +15,8 @@ public class controlador implements ActionListener {
     //  private FormularioPrincipal view;
     private Hilera model;
     private VistaInicio view;
+    private static JOptionPane option;
+    private static JDialog dialogo;
 
     /**
      * Constructor de la controlador
@@ -24,6 +29,8 @@ public class controlador implements ActionListener {
     public controlador(VistaInicio vista, Hilera model) {
         this.view = vista;
         this.model = model;
+        this.option = new JOptionPane("", JOptionPane.INFORMATION_MESSAGE);
+        this.dialogo = null;
     }
 
     /**
@@ -60,7 +67,7 @@ public class controlador implements ActionListener {
         boolean respuesta = model.isEmpty();
 
         if (respuesta == true) {
-            this.view.retornaAreaVisualizacion().setText("lista actualmente vacia,\n Dirijase Opcion Insertar!!!");
+            this.view.retornaAreaVisualizacion().setText("Lista actualmente vacia\nDirijase Opcion Insertar!!!");
 
         } else {
             this.view.retornaAreaVisualizacion().setText("Lista no vacia!!!");
@@ -116,11 +123,12 @@ public class controlador implements ActionListener {
             this.view.retornaBotonAngrama().setEnabled(true);
             this.view.retornaBotonAgregar().setEnabled(true);
             this.view.retornaCuadroAgregar().setEnabled(true);
+            this.view.retornaCuadroAnagrama().setEnabled(true);
 
         }
 
         if (comando.equals("AgregarHilera")) {
-           String cadenaNueva = this.view.retornaCuadroAgregar().getText();
+            String cadenaNueva = this.view.retornaCuadroAgregar().getText();
             if (cadenaNueva.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Campo vacio");
                 return;
@@ -161,6 +169,9 @@ public class controlador implements ActionListener {
                     this.view.retornaBotonAgregar().setEnabled(false);
                     this.view.retornaCuadroAgregar().setEnabled(false);
                     this.view.retornaCuadroString().setText("");
+                    this.view.retornaCuadroAnagrama().setEnabled(false);
+                    this.view.retornaCuadroAnagrama().setText("");
+                    this.view.retornaCuadroAgregar().setText("");
 
                 } else if (response == JOptionPane.NO_OPTION) {
                     JOptionPane.showMessageDialog(null, "Conservando Hilera Intacta!!!");
@@ -265,6 +276,31 @@ public class controlador implements ActionListener {
 
         }
 
+    }
+
+    public void visualizarDialog(Component padre, String texto, String titulo, final long timeOut) {
+        option.setMessage(texto);
+        if( dialogo == null){
+            dialogo = option.createDialog(padre,titulo);
+        }else{
+            dialogo.setTitle(titulo);
+        }
+        
+        Thread hilo = new Thread(){
+            public void run(){
+                try{
+                    Thread.sleep(timeOut);
+                    if (dialogo.isVisible()) {
+                        dialogo.setVisible(false);
+                    }
+                }catch(InterruptedException e){
+                    e.printStackTrace();
+                }
+            }
+        };
+        
+        hilo.start();
+        dialogo.setVisible(true);
     }
 
 }

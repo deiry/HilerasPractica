@@ -61,7 +61,7 @@ public class VistaEliminar extends javax.swing.JPanel {
             }
         });
 
-        jLabel6.setText("Posicion Final");
+        jLabel6.setText("Cantidad caracteres");
 
         numerElementos.setEnabled(false);
         numerElementos.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -70,6 +70,7 @@ public class VistaEliminar extends javax.swing.JPanel {
             }
         });
 
+        borradoEditado.setBackground(new java.awt.Color(131, 196, 76));
         borradoEditado.setText("Borrar");
         borradoEditado.setEnabled(false);
 
@@ -79,21 +80,20 @@ public class VistaEliminar extends javax.swing.JPanel {
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
+                .addComponent(Respuesta)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addComponent(Respuesta)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(valInicial)
-                            .addComponent(numerElementos, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                        .addComponent(borradoEditado)
-                        .addGap(34, 34, 34))))
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel5))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(valInicial)
+                    .addComponent(numerElementos, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addComponent(borradoEditado)
+                .addGap(34, 34, 34))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
