@@ -98,10 +98,10 @@ public class controlador implements ActionListener {
             String cadenaNueva = this.view.retornaCuadroString().getText();
 
             if (cadenaNueva.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Campo vacio");
+                visualizarDialog(view, "Campo vacio", "Error", 2000, JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            JOptionPane.showMessageDialog(null, "Gurdando String");
+            visualizarDialog(view, "Guardando String", "Aviso", 2000, JOptionPane.INFORMATION_MESSAGE);
             model.insertHilera(cadenaNueva);
             dato = model.imprimirLd();
             //this.view.retornaAreaVisualizacion().setText("");
@@ -130,7 +130,7 @@ public class controlador implements ActionListener {
         if (comando.equals("AgregarHilera")) {
             String cadenaNueva = this.view.retornaCuadroAgregar().getText();
             if (cadenaNueva.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Campo vacio");
+                visualizarDialog(view, "Campo vacio", "Error", 1500, JOptionPane.ERROR_MESSAGE);
                 return;
             }
             model.insertHilera(cadenaNueva);
@@ -149,9 +149,10 @@ public class controlador implements ActionListener {
                 int response = JOptionPane.showConfirmDialog(null, "Esta Seguro de eliminar Hilera?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
                 if (response == JOptionPane.YES_OPTION) {
-                    JOptionPane.showMessageDialog(null, "Eliminando Hilera");
+                    visualizarDialog(view, "Eliminando hilera", "Aviso", 1500, JOptionPane.INFORMATION_MESSAGE);
+
                     model.borrarCompleto();
-                    this.view.retornaAreaVisualizacion().setText(this.view.retornaAreaVisualizacion().getText() + "\n" + "lista actualmente vacia,\n Dirijase Opcion Insertar!!!");
+                    this.view.retornaAreaVisualizacion().setText("Lista actualmente vacia\nDirijase Opcion Insertar!!!");
                     this.view.retornaComboBorrado().setEnabled(false);
                     this.view.retornaCuadroString().setEnabled(true);
                     this.view.retornaBotonCargaString().setEnabled(true);
@@ -174,9 +175,8 @@ public class controlador implements ActionListener {
                     this.view.retornaCuadroAgregar().setText("");
 
                 } else if (response == JOptionPane.NO_OPTION) {
-                    JOptionPane.showMessageDialog(null, "Conservando Hilera Intacta!!!");
+                    visualizarDialog(view, "Conservando hilera intacta", "Aviso", 1500, JOptionPane.INFORMATION_MESSAGE);
                 }
-
             } else {
                 this.view.retornaValInicialBorrado().setEnabled(true);
                 this.view.retornaNumeroElementosBorrado().setEnabled(true);
@@ -186,7 +186,7 @@ public class controlador implements ActionListener {
 
         if (comando.equals("BorrarCharHilera")) {
             if (this.view.retornaValInicialBorrado().getText().equals("") || this.view.retornaNumeroElementosBorrado().getText().equals("")) {
-                JOptionPane.showMessageDialog(null, "Campos Incompletos!!");
+                visualizarDialog(view, "Campos incompletos", "Eror", 2000, JOptionPane.ERROR_MESSAGE);
             } else {
                 int x = Integer.parseInt(this.view.retornaValInicialBorrado().getText());
                 int y = Integer.parseInt(this.view.retornaNumeroElementosBorrado().getText());
@@ -196,14 +196,13 @@ public class controlador implements ActionListener {
                 dato = model.imprimirLd();
 
                 if (respuesta == 1) {
+                    visualizarDialog(view, "Fallo primer parametro", "Aviso", 2000, JOptionPane.INFORMATION_MESSAGE);
 
-                    this.view.retornaRespuesta().setText("Fallo Primer Parametro!!");
                 } else if (respuesta == 2) {
-
-                    this.view.retornaRespuesta().setText("Fallo Segundo Parametro!!");
+                    visualizarDialog(view, "Falló segundo parametro", "Aviso", 2000, JOptionPane.INFORMATION_MESSAGE);
                 } else if (respuesta == 3) {
+                    visualizarDialog(view, "Borrado exitoso", "Aviso", 2000, JOptionPane.INFORMATION_MESSAGE);
 
-                    this.view.retornaRespuesta().setText("Borrado Exitoso :)");
                     this.view.retornaAreaVisualizacion().setText(this.view.retornaAreaVisualizacion().getText() + "\n" + dato);
                 }
             }
@@ -212,39 +211,38 @@ public class controlador implements ActionListener {
 
         if (comando.equals("ValidePalindromo")) {
             boolean respuesta;
-            JOptionPane.showMessageDialog(null, "Esta opcion comprueba si la Hilera que ingreso se lee de igual forma \n en ambos sentidos Ej: reconocer ");
             respuesta = this.model.esPalindromo();
             if (respuesta == true) {
-
-                this.view.retornaRespuestaCom().setText("Felicitaciones Su Hilera es Palindromo");
+                visualizarDialog(view, "Su hilera es palindromo", "Aviso", 2000, JOptionPane.INFORMATION_MESSAGE);
+                this.view.retornaAreaVisualizacion().append("Su Hilera es Palindromo");
 
             } else {
-                this.view.retornaRespuestaCom().setText("Lo sentimos  Su Hilera no es Palindromo");
-
+                visualizarDialog(view, "Su hilera no es palindromo", "Aviso", 2000, JOptionPane.INFORMATION_MESSAGE);
+                this.view.retornaAreaVisualizacion().append("Su Hilera no es Palindromo");
             }
         }
 
         if (comando.equals("OrdenarLIsta")) {
-            JOptionPane.showMessageDialog(null, "Ordena lista");
+            visualizarDialog(view, "Ordenando Lista", "Aviso", 2000, JOptionPane.INFORMATION_MESSAGE);
             model.ordenarLIsta();
-            this.view.retornaAreaVisualizacion().append("\n" + model.imprimirLd());
+            this.view.retornaAreaVisualizacion().append("Ordenada:" + model.imprimirLd());
 
         }
 
         if (comando.equals("ValidarAnagrama")) {
-            JOptionPane.showMessageDialog(null, "Validando si es anagrama");
+            visualizarDialog(view, "Validando si es anagrama", "Aviso", 2000, JOptionPane.INFORMATION_MESSAGE);
             Hilera comprobar = new Hilera();
             comprobar.insertHilera(this.view.retornaCuadroAnagrama().getText());
-            this.view.retornaAreaVisualizacion().append("\n" + "Es anagrama " + model.esAnagrama(comprobar));;
+            this.view.retornaAreaVisualizacion().append("\n" + "Es anagrama?: " + model.esAnagrama(comprobar));;
 
         }
 
         if (comando.equals("InvertirHilera")) {
 
-            JOptionPane.showMessageDialog(null, "Invirtiendo Hileras");
+            visualizarDialog(view, "Invirtiendo Hilera", "Aviso", 2000, JOptionPane.INFORMATION_MESSAGE);
             model.invertirHilera();
             System.out.println("");
-            this.view.retornaAreaVisualizacion().append("\n" + model.imprimirLd());;
+            this.view.retornaAreaVisualizacion().append("Invertida: " + model.imprimirLd());;
 
         }
 
@@ -256,49 +254,50 @@ public class controlador implements ActionListener {
             int i = Integer.parseInt(this.view.retornaPosModificar().getText());
             int j = Integer.parseInt(this.view.retornaCantModificar().getText());
             model.modificarHilera2(i, j, t);
-            this.view.retornaAreaVisualizacion().append("\n" + model.imprimirLd());
+            this.view.retornaAreaVisualizacion().append("Modificada:" + model.imprimirLd());
 
         }
 
         if (comando.equals("EjecutarSubString")) {
-            JOptionPane.showMessageDialog(null, "Ejecutando substring");
+
             int i = Integer.parseInt(this.view.retornaPosicionInicialSubString().getText());
             int j = Integer.parseInt(this.view.retornaNumPosicionesSubString().getText());
             Hilera aux;
             aux = model.subString(i, j);
             if (aux == null) {
-                JOptionPane.showMessageDialog(null, "Fallaron Parametros");
-            } else {
-                this.view.retornaAreaVisualizacion().append("\n" + "String Original" + model.imprimirLd());
-                this.view.retornaAreaVisualizacion().append("\n" + "SubString " + aux.imprimirLd());
+                visualizarDialog(view, "Fallaron parametros", "Aviso", 2000, JOptionPane.WARNING_MESSAGE);
 
+            } else {
+                this.view.retornaAreaVisualizacion().append("\n" + "Original" + model.imprimirLd());
+                this.view.retornaAreaVisualizacion().append("\n" + "SubString " + aux.imprimirLd());
             }
 
         }
 
     }
 
-    public void visualizarDialog(Component padre, String texto, String titulo, final long timeOut) {
+    public void visualizarDialog(Component padre, String texto, String titulo, final long timeOut, int type) {
         option.setMessage(texto);
-        if( dialogo == null){
-            dialogo = option.createDialog(padre,titulo);
-        }else{
+        option.setMessageType(type);
+        if (dialogo == null) {
+            dialogo = option.createDialog(padre, titulo);
+        } else {
             dialogo.setTitle(titulo);
         }
-        
-        Thread hilo = new Thread(){
-            public void run(){
-                try{
+
+        Thread hilo = new Thread() {
+            public void run() {
+                try {
                     Thread.sleep(timeOut);
                     if (dialogo.isVisible()) {
                         dialogo.setVisible(false);
                     }
-                }catch(InterruptedException e){
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
         };
-        
+
         hilo.start();
         dialogo.setVisible(true);
     }

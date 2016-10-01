@@ -58,6 +58,7 @@ public class VistaAnagrama extends javax.swing.JPanel {
 
         jLabel10.setText("Ingrese palabra a evaluar");
 
+        cuadroAnagrama.setEnabled(false);
         cuadroAnagrama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cuadroAnagramaActionPerformed(evt);
