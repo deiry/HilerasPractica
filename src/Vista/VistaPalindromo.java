@@ -46,7 +46,9 @@ public JButton retornaBotonPalindromo()
 
         setBackground(new java.awt.Color(255, 255, 255));
 
+        VerificaPalindromo.setBackground(new java.awt.Color(131, 196, 76));
         VerificaPalindromo.setText("Verificar");
+        VerificaPalindromo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         VerificaPalindromo.setEnabled(false);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Recursos/palindromoEx.png"))); // NOI18N
@@ -61,8 +63,8 @@ public JButton retornaBotonPalindromo()
                         .addGap(107, 107, 107)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(213, 213, 213)
-                        .addComponent(VerificaPalindromo)))
+                        .addGap(194, 194, 194)
+                        .addComponent(VerificaPalindromo, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(132, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -70,9 +72,9 @@ public JButton retornaBotonPalindromo()
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(79, 79, 79)
                 .addComponent(jLabel1)
-                .addGap(98, 98, 98)
-                .addComponent(VerificaPalindromo)
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addGap(97, 97, 97)
+                .addComponent(VerificaPalindromo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(107, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

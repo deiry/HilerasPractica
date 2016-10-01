@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Controlador.Validaciones;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
@@ -84,6 +85,11 @@ public class VistaModificar extends javax.swing.JPanel {
         jLabel12.setText("Hilera a reemplazar");
 
         cuadroModificar.setEnabled(false);
+        cuadroModificar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cuadroModificarKeyTyped(evt);
+            }
+        });
 
         cuadroPosModicar.setEnabled(false);
         cuadroPosModicar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -101,7 +107,9 @@ public class VistaModificar extends javax.swing.JPanel {
             }
         });
 
+        botonModificar.setBackground(new java.awt.Color(131, 196, 76));
         botonModificar.setText("Modificar");
+        botonModificar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         botonModificar.setEnabled(false);
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
@@ -123,8 +131,8 @@ public class VistaModificar extends javax.swing.JPanel {
                                 .addComponent(cuadroCantModificar, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(cuadroPosModicar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE))))
                     .addGroup(jPanel19Layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addComponent(botonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(145, 145, 145)
+                        .addComponent(botonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(93, Short.MAX_VALUE))
         );
         jPanel19Layout.setVerticalGroup(
@@ -143,8 +151,8 @@ public class VistaModificar extends javax.swing.JPanel {
                     .addComponent(jLabel13)
                     .addComponent(cuadroCantModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addComponent(botonModificar)
-                .addGap(24, 24, 24))
+                .addComponent(botonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -167,17 +175,24 @@ public class VistaModificar extends javax.swing.JPanel {
 
     private void cuadroPosModicarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cuadroPosModicarKeyTyped
         // TODO add your handling code here:
-        if (!Character.isDigit(evt.getKeyChar())) {
+        if (!Validaciones.numeros(evt.getKeyChar())) {
             evt.consume();
         }
     }//GEN-LAST:event_cuadroPosModicarKeyTyped
 
     private void cuadroCantModificarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cuadroCantModificarKeyTyped
         // TODO add your handling code here:
-        if (!Character.isDigit(evt.getKeyChar())) {
+        if (!Validaciones.numeros(evt.getKeyChar())) {
             evt.consume();
         }
     }//GEN-LAST:event_cuadroCantModificarKeyTyped
+
+    private void cuadroModificarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cuadroModificarKeyTyped
+        // TODO add your handling code here:
+        
+        if(!Validaciones.letras(evt.getKeyChar()))
+            evt.consume();
+    }//GEN-LAST:event_cuadroModificarKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

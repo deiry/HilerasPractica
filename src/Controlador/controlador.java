@@ -98,10 +98,10 @@ public class controlador implements ActionListener {
             String cadenaNueva = this.view.retornaCuadroString().getText();
 
             if (cadenaNueva.isEmpty()) {
-                visualizarDialog(view, "Campo vacio", "Error", 2000, JOptionPane.ERROR_MESSAGE);
+                visualizarDialog(view, "Campo vacio", "Error", 1500, JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            visualizarDialog(view, "Guardando String", "Aviso", 2000, JOptionPane.INFORMATION_MESSAGE);
+            visualizarDialog(view, "Guardando String", "Aviso", 1000, JOptionPane.INFORMATION_MESSAGE);
             model.insertHilera(cadenaNueva);
             dato = model.imprimirLd();
             //this.view.retornaAreaVisualizacion().setText("");
@@ -130,7 +130,7 @@ public class controlador implements ActionListener {
         if (comando.equals("AgregarHilera")) {
             String cadenaNueva = this.view.retornaCuadroAgregar().getText();
             if (cadenaNueva.isEmpty()) {
-                visualizarDialog(view, "Campo vacio", "Error", 1500, JOptionPane.ERROR_MESSAGE);
+                visualizarDialog(view, "Campo vacio", "Error", 100, JOptionPane.ERROR_MESSAGE);
                 return;
             }
             model.insertHilera(cadenaNueva);
@@ -149,8 +149,7 @@ public class controlador implements ActionListener {
                 int response = JOptionPane.showConfirmDialog(null, "Esta Seguro de eliminar Hilera?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
                 if (response == JOptionPane.YES_OPTION) {
-                    visualizarDialog(view, "Eliminando hilera", "Aviso", 1500, JOptionPane.INFORMATION_MESSAGE);
-
+                    visualizarDialog(view, "Eliminando hilera", "Aviso", 1000, JOptionPane.INFORMATION_MESSAGE);
                     model.borrarCompleto();
                     this.view.retornaAreaVisualizacion().setText("Lista actualmente vacia\nDirijase Opcion Insertar!!!");
                     this.view.retornaComboBorrado().setEnabled(false);
@@ -175,7 +174,7 @@ public class controlador implements ActionListener {
                     this.view.retornaCuadroAgregar().setText("");
 
                 } else if (response == JOptionPane.NO_OPTION) {
-                    visualizarDialog(view, "Conservando hilera intacta", "Aviso", 1500, JOptionPane.INFORMATION_MESSAGE);
+                    visualizarDialog(view, "Conservando hilera intacta", "Aviso", 1000, JOptionPane.INFORMATION_MESSAGE);
                 }
             } else {
                 this.view.retornaValInicialBorrado().setEnabled(true);
@@ -186,7 +185,7 @@ public class controlador implements ActionListener {
 
         if (comando.equals("BorrarCharHilera")) {
             if (this.view.retornaValInicialBorrado().getText().equals("") || this.view.retornaNumeroElementosBorrado().getText().equals("")) {
-                visualizarDialog(view, "Campos incompletos", "Eror", 2000, JOptionPane.ERROR_MESSAGE);
+                visualizarDialog(view, "Campos incompletos", "Eror", 1500, JOptionPane.ERROR_MESSAGE);
             } else {
                 int x = Integer.parseInt(this.view.retornaValInicialBorrado().getText());
                 int y = Integer.parseInt(this.view.retornaNumeroElementosBorrado().getText());
@@ -196,14 +195,14 @@ public class controlador implements ActionListener {
                 dato = model.imprimirLd();
 
                 if (respuesta == 1) {
-                    visualizarDialog(view, "Fallo primer parametro", "Aviso", 2000, JOptionPane.INFORMATION_MESSAGE);
+                    visualizarDialog(view, "Fallo primer parametro", "Aviso", 1500, JOptionPane.INFORMATION_MESSAGE);
 
                 } else if (respuesta == 2) {
-                    visualizarDialog(view, "Falló segundo parametro", "Aviso", 2000, JOptionPane.INFORMATION_MESSAGE);
+                    visualizarDialog(view, "Falló segundo parametro", "Aviso", 1500, JOptionPane.INFORMATION_MESSAGE);
                 } else if (respuesta == 3) {
-                    visualizarDialog(view, "Borrado exitoso", "Aviso", 2000, JOptionPane.INFORMATION_MESSAGE);
+                    visualizarDialog(view, "Borrado exitoso", "Aviso", 1500, JOptionPane.INFORMATION_MESSAGE);
 
-                    this.view.retornaAreaVisualizacion().setText(this.view.retornaAreaVisualizacion().getText() + "\n" + dato);
+                    this.view.retornaAreaVisualizacion().append("Original: " + dato);
                 }
             }
 
@@ -213,46 +212,47 @@ public class controlador implements ActionListener {
             boolean respuesta;
             respuesta = this.model.esPalindromo();
             if (respuesta == true) {
-                visualizarDialog(view, "Su hilera es palindromo", "Aviso", 2000, JOptionPane.INFORMATION_MESSAGE);
+                visualizarDialog(view, "Su hilera es palindromo", "Aviso", 1500, JOptionPane.INFORMATION_MESSAGE);
                 this.view.retornaAreaVisualizacion().append("Su Hilera es Palindromo");
 
             } else {
-                visualizarDialog(view, "Su hilera no es palindromo", "Aviso", 2000, JOptionPane.INFORMATION_MESSAGE);
+                visualizarDialog(view, "Su hilera no es palindromo", "Aviso", 1500, JOptionPane.INFORMATION_MESSAGE);
                 this.view.retornaAreaVisualizacion().append("Su Hilera no es Palindromo");
             }
         }
 
         if (comando.equals("OrdenarLIsta")) {
-            visualizarDialog(view, "Ordenando Lista", "Aviso", 2000, JOptionPane.INFORMATION_MESSAGE);
+            visualizarDialog(view, "Ordenando Lista", "Aviso", 1000, JOptionPane.INFORMATION_MESSAGE);
             model.ordenarLIsta();
             this.view.retornaAreaVisualizacion().append("Ordenada:" + model.imprimirLd());
 
         }
 
         if (comando.equals("ValidarAnagrama")) {
-            visualizarDialog(view, "Validando si es anagrama", "Aviso", 2000, JOptionPane.INFORMATION_MESSAGE);
+            visualizarDialog(view, "Validando si es anagrama", "Aviso", 1000, JOptionPane.INFORMATION_MESSAGE);
             Hilera comprobar = new Hilera();
             comprobar.insertHilera(this.view.retornaCuadroAnagrama().getText());
-            this.view.retornaAreaVisualizacion().append("\n" + "Es anagrama?: " + model.esAnagrama(comprobar));;
+            this.view.retornaAreaVisualizacion().append("Es anagrama?: " + model.esAnagrama(comprobar));;
 
         }
 
         if (comando.equals("InvertirHilera")) {
 
-            visualizarDialog(view, "Invirtiendo Hilera", "Aviso", 2000, JOptionPane.INFORMATION_MESSAGE);
+            visualizarDialog(view, "Invirtiendo Hilera", "Aviso", 1000, JOptionPane.INFORMATION_MESSAGE);
+            this.view.retornaAreaVisualizacion().append("Orignal: " + model.imprimirLd());
             model.invertirHilera();
-            System.out.println("");
-            this.view.retornaAreaVisualizacion().append("Invertida: " + model.imprimirLd());;
+            this.view.retornaAreaVisualizacion().append("Invertida: " + model.imprimirLd());
 
         }
 
         if (comando.equals("ModificarHilera")) {
+            visualizarDialog(view, "Modificando Hilera", "Aviso", 1000, JOptionPane.INFORMATION_MESSAGE);
             String cad = this.view.retornaCuadroModificar().getText();
             Hilera t = new Hilera();
             t.insertHilera(cad);
-
             int i = Integer.parseInt(this.view.retornaPosModificar().getText());
             int j = Integer.parseInt(this.view.retornaCantModificar().getText());
+            this.view.retornaAreaVisualizacion().append("Orignal: " + model.imprimirLd());
             model.modificarHilera2(i, j, t);
             this.view.retornaAreaVisualizacion().append("Modificada:" + model.imprimirLd());
 
@@ -265,11 +265,11 @@ public class controlador implements ActionListener {
             Hilera aux;
             aux = model.subString(i, j);
             if (aux == null) {
-                visualizarDialog(view, "Fallaron parametros", "Aviso", 2000, JOptionPane.WARNING_MESSAGE);
+                visualizarDialog(view, "Fallaron parametros", "Aviso", 1500, JOptionPane.WARNING_MESSAGE);
 
             } else {
-                this.view.retornaAreaVisualizacion().append("\n" + "Original" + model.imprimirLd());
-                this.view.retornaAreaVisualizacion().append("\n" + "SubString " + aux.imprimirLd());
+                this.view.retornaAreaVisualizacion().append("Original" + model.imprimirLd());
+                this.view.retornaAreaVisualizacion().append("SubString " + aux.imprimirLd());
             }
 
         }

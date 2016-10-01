@@ -44,7 +44,9 @@ public JButton retornaBotonOrdenar()
 
         setBackground(new java.awt.Color(255, 255, 255));
 
+        BotonOrdenar.setBackground(new java.awt.Color(131, 196, 76));
         BotonOrdenar.setText("Ordenar");
+        BotonOrdenar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         BotonOrdenar.setEnabled(false);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Recursos/ordenarEx.png"))); // NOI18N
@@ -54,23 +56,23 @@ public JButton retornaBotonOrdenar()
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
+                .addContainerGap(49, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(35, 35, 35))
+                        .addComponent(BotonOrdenar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(144, 144, 144))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(BotonOrdenar)
-                        .addGap(144, 144, 144))))
+                        .addComponent(jLabel1)
+                        .addGap(27, 27, 27))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel1)
-                .addGap(47, 47, 47)
-                .addComponent(BotonOrdenar)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addComponent(BotonOrdenar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

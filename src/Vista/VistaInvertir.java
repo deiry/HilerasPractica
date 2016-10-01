@@ -45,7 +45,9 @@ public JButton retornaBotonInvertir(){
 
         setBackground(new java.awt.Color(255, 255, 255));
 
+        botonInvertir.setBackground(new java.awt.Color(131, 196, 76));
         botonInvertir.setText("Invertir Hilera");
+        botonInvertir.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         botonInvertir.setEnabled(false);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Recursos/InvertirEx.png"))); // NOI18N
@@ -55,22 +57,23 @@ public JButton retornaBotonInvertir(){
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(39, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonInvertir)
-                .addGap(118, 118, 118))
+                .addContainerGap(39, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(botonInvertir, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(111, 111, 111))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(38, 38, 38)
                 .addComponent(jLabel1)
-                .addGap(48, 48, 48)
-                .addComponent(botonInvertir)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(botonInvertir, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(63, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

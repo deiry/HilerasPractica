@@ -93,7 +93,9 @@ public JButton retornaBotoEjecutarSubString()
 
         jLabel15.setText("Posiciones");
 
+        ejecutaSubString.setBackground(new java.awt.Color(131, 196, 76));
         ejecutaSubString.setText("Ejecutar");
+        ejecutaSubString.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         ejecutaSubString.setEnabled(false);
 
         javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
@@ -130,8 +132,8 @@ public JButton retornaBotoEjecutarSubString()
                     .addComponent(jLabel14)
                     .addComponent(numPosicionSubString, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
-                .addGap(43, 43, 43)
-                .addComponent(ejecutaSubString)
+                .addGap(33, 33, 33)
+                .addComponent(ejecutaSubString, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -151,7 +153,7 @@ public JButton retornaBotoEjecutarSubString()
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+                .addContainerGap(32, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
