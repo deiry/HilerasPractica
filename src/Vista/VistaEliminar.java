@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Controlador.Validaciones;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -146,7 +147,7 @@ public class VistaEliminar extends javax.swing.JPanel {
 
     private void valInicialKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valInicialKeyTyped
         // TODO add your handling code here:
-        if(!Character.isDigit(evt.getKeyChar()))
+        if(Validaciones.numeros(evt.getKeyChar()))
         {
             evt.consume();
         }
@@ -154,7 +155,7 @@ public class VistaEliminar extends javax.swing.JPanel {
 
     private void numerElementosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numerElementosKeyTyped
         // TODO add your handling code here:
-        if(!Character.isDigit(evt.getKeyChar()))
+        if(Validaciones.numeros(evt.getKeyChar()))
         {
             evt.consume();
         }

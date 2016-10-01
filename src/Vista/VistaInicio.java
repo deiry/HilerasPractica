@@ -35,6 +35,8 @@ public class VistaInicio extends javax.swing.JFrame {
      * Creates new form VistaInicio
      */
     public VistaInicio() {
+        this.setBackground(Color.white);
+        this.setForeground(Color.red);
         initComponents();
         panel = new JTabbedPane();
         vistaInsert = new VistaInsertar();
@@ -90,26 +92,6 @@ public class VistaInicio extends javax.swing.JFrame {
         jpOri.revalidate();
     }
 
-    public void mostrarPaneles() {
-        cleanPanel(panelMundo);
-        setPanel(vistaInsert, panelMundo);
-        vistaInsert.setVisible(true);
-        /*  paintPanel();
-        vistaEliminar.setVisible(true);
-        paintPanel();
-        vistaInvertir.setVisible(true);
-        paintPanel();
-        vistaModificar.setVisible(true);
-        paintPanel();
-        vistaOrdenar.setVisible(true);
-        paintPanel();
-        vistaSub.setVisible(true);
-        paintPanel();
-        vistaPalindromo.setVisible(true);
-        paintPanel();
-        vistaAnagrama.setVisible(true);
-        paintPanel();*/
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -198,7 +180,8 @@ public class VistaInicio extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panelMundo, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
+                .addGap(0, 14, Short.MAX_VALUE)
+                .addComponent(panelMundo, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(panelComentario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -207,8 +190,8 @@ public class VistaInicio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelMundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelMundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelComentario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())

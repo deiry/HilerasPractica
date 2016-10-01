@@ -5,7 +5,10 @@
  */
 package Vista;
 
+import Controlador.Validaciones;
+import java.awt.ComponentOrientation;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -80,6 +83,12 @@ public class VistaInsertar extends javax.swing.JPanel {
 
         jLabel1.setText("Ingresar Hilera Original");
 
+        CuadroString.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CuadroStringKeyTyped(evt);
+            }
+        });
+
         cargaString.setBackground(new java.awt.Color(131, 196, 76));
         cargaString.setText("Ingresar");
         cargaString.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -87,6 +96,11 @@ public class VistaInsertar extends javax.swing.JPanel {
         jLabel2.setText("Agregar Hilera orginal");
 
         CuadroAgregar.setEnabled(false);
+        CuadroAgregar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CuadroAgregarKeyTyped(evt);
+            }
+        });
 
         agregarString.setBackground(new java.awt.Color(131, 196, 76));
         agregarString.setText("Agregar");
@@ -137,6 +151,28 @@ public class VistaInsertar extends javax.swing.JPanel {
                 .addContainerGap(39, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void CuadroStringKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CuadroStringKeyTyped
+        // TODO add your handling code here:
+        char carac = evt.getKeyChar();
+        if (!Validaciones.letras(carac)) {
+            evt.consume();
+        } else if (!Validaciones.minuscula(carac)) {
+            evt.setKeyChar((char) (carac + 32));
+        }
+
+
+    }//GEN-LAST:event_CuadroStringKeyTyped
+
+    private void CuadroAgregarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CuadroAgregarKeyTyped
+        // TODO add your handling code here:
+        char carac = evt.getKeyChar();
+        if (!Validaciones.letras(carac)) {
+            evt.consume();
+        } else if (!Validaciones.minuscula(carac)) {
+            evt.setKeyChar((char) (carac + 32));
+        }
+    }//GEN-LAST:event_CuadroAgregarKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
