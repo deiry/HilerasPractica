@@ -24,6 +24,8 @@ public class VistaInsertar extends javax.swing.JPanel {
         initComponents();
 
     }
+    
+    
 
     /**
      * Metodo que recupera un objeto tipo JTextField con name CuadroString
@@ -78,6 +80,7 @@ public class VistaInsertar extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         CuadroAgregar = new javax.swing.JTextField();
         agregarString = new javax.swing.JButton();
+        next = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -107,36 +110,40 @@ public class VistaInsertar extends javax.swing.JPanel {
         agregarString.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         agregarString.setEnabled(false);
 
+        next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Recursos/next.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 367, Short.MAX_VALUE)
+                .addComponent(next))
             .addGroup(layout.createSequentialGroup()
+                .addGap(93, 93, 93)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(CuadroAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(113, 113, 113)
+                                .addGap(19, 19, 19)
                                 .addComponent(jLabel2))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(116, 116, 116)
+                                .addGap(22, 22, 22)
                                 .addComponent(jLabel1))
+                            .addComponent(CuadroString, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(94, 94, 94)
-                                .addComponent(CuadroString, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(136, 136, 136)
+                                .addGap(42, 42, 42)
                                 .addComponent(cargaString, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
+                        .addGap(31, 31, 31)
                         .addComponent(agregarString, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(34, 34, 34)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(CuadroString, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -148,7 +155,8 @@ public class VistaInsertar extends javax.swing.JPanel {
                 .addComponent(CuadroAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(agregarString, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(next))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -182,5 +190,12 @@ public class VistaInsertar extends javax.swing.JPanel {
     private javax.swing.JButton cargaString;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel next;
     // End of variables declaration//GEN-END:variables
+
+
+
+    public javax.swing.JLabel getNext() {
+        return next;
+    }
 }

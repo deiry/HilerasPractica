@@ -20,6 +20,8 @@ public class VistaOrdenar extends javax.swing.JPanel {
         initComponents();
     }
     
+    
+    
     /**
  * Metodo que recupera un objeto tipo JButton con name BotonOrdenar 
  * @return un objeto tipo JButton
@@ -41,6 +43,8 @@ public JButton retornaBotonOrdenar()
 
         BotonOrdenar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        next = new javax.swing.JLabel();
+        before = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -51,34 +55,59 @@ public JButton retornaBotonOrdenar()
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Recursos/ordenarEx.png"))); // NOI18N
 
+        next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Recursos/next.png"))); // NOI18N
+
+        before.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Recursos/before.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(before)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 309, Short.MAX_VALUE)
+                        .addComponent(next)
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(BotonOrdenar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(144, 144, 144))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(27, 27, 27))))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(20, 20, 20))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(BotonOrdenar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(127, 127, 127))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(46, 46, 46)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BotonOrdenar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(next)
+                    .addComponent(before)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonOrdenar;
+    private javax.swing.JLabel before;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel next;
     // End of variables declaration//GEN-END:variables
+
+    public javax.swing.JLabel getBefore() {
+        return before;
+    }
+
+    public javax.swing.JLabel getNext() {
+        return next;
+    }
 }

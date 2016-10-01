@@ -23,6 +23,7 @@ public class VistaEliminar extends javax.swing.JPanel {
     public VistaEliminar() {
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,6 +43,8 @@ public class VistaEliminar extends javax.swing.JPanel {
         numerElementos = new javax.swing.JTextField();
         borradoEditado = new javax.swing.JButton();
         Respuesta = new javax.swing.JLabel();
+        next = new javax.swing.JLabel();
+        before = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -117,6 +120,10 @@ public class VistaEliminar extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Recursos/next.png"))); // NOI18N
+
+        before.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Recursos/before.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -127,10 +134,16 @@ public class VistaEliminar extends javax.swing.JPanel {
                 .addGap(29, 29, 29)
                 .addComponent(RespuestaBorrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(before)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(next)
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,7 +154,10 @@ public class VistaEliminar extends javax.swing.JPanel {
                     .addComponent(RespuestaBorrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(next)
+                    .addComponent(before)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -165,11 +181,13 @@ public class VistaEliminar extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Respuesta;
     private javax.swing.JComboBox<String> RespuestaBorrado;
+    private javax.swing.JLabel before;
     private javax.swing.JButton borradoEditado;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel14;
+    private javax.swing.JLabel next;
     private javax.swing.JTextField numerElementos;
     private javax.swing.JTextField valInicial;
     // End of variables declaration//GEN-END:variables
@@ -223,5 +241,13 @@ public JLabel retornaRespuesta()
 {
     return Respuesta;
 }
+
+    public javax.swing.JLabel getBefore() {
+        return before;
+    }
+
+    public javax.swing.JLabel getNext() {
+        return next;
+    }
 
 }

@@ -6,6 +6,8 @@
 package Vista;
 
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -30,6 +32,8 @@ public class VistaInicio extends javax.swing.JFrame {
     private VistaSubhilera vistaSub;
     private VistaPalindromo vistaPalindromo;
     private VistaAnagrama vistaAnagrama;
+    private MouseAdapter evtNext, evtBefore;
+    private int contTab;
 
     /**
      * Creates new form VistaInicio
@@ -38,6 +42,8 @@ public class VistaInicio extends javax.swing.JFrame {
         this.setBackground(Color.white);
         this.setForeground(Color.red);
         initComponents();
+        contTab = 0;
+
         panel = new JTabbedPane();
         vistaInsert = new VistaInsertar();
         vistaEliminar = new VistaEliminar();
@@ -47,20 +53,59 @@ public class VistaInicio extends javax.swing.JFrame {
         vistaSub = new VistaSubhilera();
         vistaPalindromo = new VistaPalindromo();
         vistaAnagrama = new VistaAnagrama();
-        panel.setBackground(Color.white);
 
-        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/anagrama.png")), vistaAnagrama, "Verificar si Hilera es anagrama");
-        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/palindro.png")), vistaPalindromo, "Verificar Hilera si es palindromo");
-        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/subHilera.png")), vistaSub, "Extraer SubHilera");
-        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/ordenar.png")), vistaOrdenar, "Ordenar Hilera");
+        panel.setBackground(Color.white);
         panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/insert.png")), vistaInsert, "Insertar Hilera");
-        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/delete.png")), vistaEliminar, "Eliminar Hilera");
         panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/modify.png")), vistaModificar, "Modificar Hilera");
-        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/reverse.png")), vistaInvertir, "Invertir Hilera");
-        panel.setSelectedIndex(4);
-        //    mostrarPaneles();
+        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/delete.png")), vistaEliminar, "Eliminar Hilera");
+        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/ordenar2.png")), vistaOrdenar, "Ordenar Hilera");
+        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/anagrama2.png")), vistaAnagrama, "Verificar si Hilera es anagrama");
+        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/palindro2.png")), vistaPalindromo, "Verificar Hilera si es palindromo");
+        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/reverse2.png")), vistaInvertir, "Invertir Hilera");
+        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/subHilera2.png")), vistaSub, "Extraer SubHilera");
+        panel.setSelectedIndex(contTab);
+
+        evtNext = new MouseAdapter() {
+
+            public void mouseClicked(MouseEvent e) {
+                contTab = panel.getSelectedIndex();
+                if (contTab++ == 8) {
+                    panel.setSelectedIndex(0);
+                } else {
+                    panel.setSelectedIndex(contTab++);
+                }
+            }
+        };
+
+        evtBefore = new MouseAdapter() {
+
+            public void mouseClicked(MouseEvent e) {
+                contTab = panel.getSelectedIndex()-1;
+               
+                panel.setSelectedIndex(contTab);
+            }
+        };
+        iniciarEventos();
         this.panelMundo.add(panel);
-        
+
+    }
+
+    public void iniciarEventos() {
+
+        vistaInsert.getNext().addMouseListener(evtNext);
+        vistaEliminar.getNext().addMouseListener(evtNext);
+        vistaModificar.getNext().addMouseListener(evtNext);
+        vistaInvertir.getNext().addMouseListener(evtNext);
+        vistaOrdenar.getNext().addMouseListener(evtNext);
+        vistaPalindromo.getNext().addMouseListener(evtNext);
+        vistaAnagrama.getNext().addMouseListener(evtNext);
+        vistaEliminar.getBefore().addMouseListener(evtBefore);
+        vistaModificar.getBefore().addMouseListener(evtBefore);
+        vistaInvertir.getBefore().addMouseListener(evtBefore);
+        vistaOrdenar.getBefore().addMouseListener(evtBefore);
+        vistaSub.getBefore().addMouseListener(evtBefore);
+        vistaPalindromo.getBefore().addMouseListener(evtBefore);
+        vistaAnagrama.getBefore().addMouseListener(evtBefore);
     }
 
     public void paintPanel() {
@@ -92,7 +137,6 @@ public class VistaInicio extends javax.swing.JFrame {
         jpOri.revalidate();
     }
 
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -106,9 +150,6 @@ public class VistaInicio extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         AreaVisualizacion = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
-        panelComentario = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        labelRespuesta = new javax.swing.JLabel();
         panelMundo = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -144,34 +185,6 @@ public class VistaInicio extends javax.swing.JFrame {
                 .addContainerGap(54, Short.MAX_VALUE))
         );
 
-        panelComentario.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setText("Respuesta");
-
-        javax.swing.GroupLayout panelComentarioLayout = new javax.swing.GroupLayout(panelComentario);
-        panelComentario.setLayout(panelComentarioLayout);
-        panelComentarioLayout.setHorizontalGroup(
-            panelComentarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelComentarioLayout.createSequentialGroup()
-                .addGroup(panelComentarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelComentarioLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(labelRespuesta))
-                    .addGroup(panelComentarioLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelComentarioLayout.setVerticalGroup(
-            panelComentarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelComentarioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(30, 30, 30)
-                .addComponent(labelRespuesta)
-                .addContainerGap(139, Short.MAX_VALUE))
-        );
-
         panelMundo.setBackground(new java.awt.Color(255, 255, 255));
         panelMundo.setLayout(new java.awt.CardLayout());
 
@@ -184,7 +197,6 @@ public class VistaInicio extends javax.swing.JFrame {
                 .addComponent(panelMundo, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(panelComentario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,9 +204,7 @@ public class VistaInicio extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelMundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelComentario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
@@ -237,12 +247,9 @@ public class VistaInicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea AreaVisualizacion;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel labelRespuesta;
-    private javax.swing.JPanel panelComentario;
     private javax.swing.JPanel panelMundo;
     // End of variables declaration//GEN-END:variables
 
@@ -431,14 +438,6 @@ public class VistaInicio extends javax.swing.JFrame {
         return vistaSub.retornaBotoEjecutarSubString();
     }
 
-    /**
-     * Metodo para mostrar la respuesta en el panel de observaciones
-     *
-     * @return Obejto tipo JLabel
-     */
-    public JLabel retornaRespuestaCom() {
-        return labelRespuesta;
-    }
 
     /**
      * Metodo que retorna el cuadro de texto para agregar una hilera a la lista

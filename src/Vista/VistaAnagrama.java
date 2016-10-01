@@ -20,6 +20,8 @@ public class VistaAnagrama extends javax.swing.JPanel {
     public VistaAnagrama() {
         initComponents();
     }
+    
+    
 
     /**
      * Metodo que recupera un objeto tipo JTextField con name cuadroAnagrama
@@ -53,6 +55,8 @@ public class VistaAnagrama extends javax.swing.JPanel {
         cuadroAnagrama = new javax.swing.JTextField();
         botonAnagrama = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        next = new javax.swing.JLabel();
+        before = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -70,39 +74,59 @@ public class VistaAnagrama extends javax.swing.JPanel {
             }
         });
 
+        botonAnagrama.setBackground(new java.awt.Color(131, 196, 76));
         botonAnagrama.setText("Cargar");
+        botonAnagrama.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         botonAnagrama.setEnabled(false);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Recursos/anagramaEx.png"))); // NOI18N
+
+        next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Recursos/next.png"))); // NOI18N
+
+        before.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Recursos/before.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(cuadroAnagrama, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonAnagrama))
-                    .addComponent(jLabel10))
-                .addContainerGap(70, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(before)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(next))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(cuadroAnagrama, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(botonAnagrama, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel10))
+                        .addGap(0, 67, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addContainerGap(26, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel10)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cuadroAnagrama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonAnagrama))
-                .addGap(86, 86, 86))
+                    .addComponent(botonAnagrama, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(next)
+                    .addComponent(before)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -119,9 +143,23 @@ public class VistaAnagrama extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel before;
     private javax.swing.JButton botonAnagrama;
     private javax.swing.JTextField cuadroAnagrama;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel next;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * Metodo para obtener el label donde se hizo el evento
+     * @return Obejto Label
+     */
+    public javax.swing.JLabel getBefore() {
+        return before;
+    }
+
+    public javax.swing.JLabel getNext() {
+        return next;
+    }
 }

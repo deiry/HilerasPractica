@@ -21,6 +21,7 @@ public class VistaSubhilera extends javax.swing.JPanel {
         initComponents();
     }
     
+    
     /**
  * Metodo que recupera un objeto tipo JTextField con name posicionInicialSubString 
  * @return un objeto tipo JTextField
@@ -67,6 +68,7 @@ public JButton retornaBotoEjecutarSubString()
         jLabel15 = new javax.swing.JLabel();
         ejecutaSubString = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        before = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -139,25 +141,33 @@ public JButton retornaBotoEjecutarSubString()
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Recursos/subHileraEx.png"))); // NOI18N
 
+        before.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Recursos/before.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(34, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(81, 81, 81)
+                            .addComponent(jLabel1))
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(before))))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(before))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -180,6 +190,7 @@ public JButton retornaBotoEjecutarSubString()
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel before;
     private javax.swing.JButton ejecutaSubString;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
@@ -189,4 +200,9 @@ public JButton retornaBotoEjecutarSubString()
     private javax.swing.JTextField numPosicionSubString;
     private javax.swing.JTextField posicionInicialSubString;
     // End of variables declaration//GEN-END:variables
+
+    public javax.swing.JLabel getBefore() {
+        return before;
+    }
+
 }
