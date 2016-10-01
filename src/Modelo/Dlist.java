@@ -161,7 +161,7 @@ public class Dlist {
     }
 
     public void ordenarLIsta() {
-        Dnode p, menor, q;
+        Dnode p, menor, q,l;
         p = getFirstNode();
         while (p != getLastNode()) {
             menor = p;
@@ -177,7 +177,9 @@ public class Dlist {
                 p = p.getLd();
             } else {
                 disconnect(menor);
-                connect(menor, p.getLi());
+                //connect(menor, p.getLi());
+                l=new Dnode(menor.getDato());
+                connect(l,p.getLi());
 
             }
         }

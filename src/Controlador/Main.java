@@ -1,8 +1,9 @@
 
 package Controlador;
-
 import Modelo.Hilera;
 import Vista.FormularioPrincipal;
+import Vista.VistaInicio;
+import Vista.VistaInsertar;
 
 
 
@@ -17,16 +18,18 @@ public class Main {
     public static void main(String[] args) {
         
         
-     
-        FormularioPrincipal view=new FormularioPrincipal();
+   
+      //  FormularioPrincipal view=new FormularioPrincipal();
         Hilera model=new Hilera();
-        
+        VistaInicio view = new VistaInicio();
         
         controlador controller=new  controlador(view, model);
         controller.cargarAtributos();
         controller.mostrar();
        
-        
+ 
+     
+      
         
     }
     
