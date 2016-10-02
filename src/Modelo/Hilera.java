@@ -203,12 +203,18 @@ public class Hilera extends Dlist {
                 p = p.getLd();
                 q = q.getLd();
             }
+            return true;
         }
-
-        return true;
-
+        return false;
     }
 
+    /**
+     * Metodo para modificar la hilera donde localiza el nodo de donde empieza y
+     * termina para luego cambiar las ligas por la hilera a reemplazar
+     *
+     * @param i Posicion iniciar de la hilera a modificar
+     * @param j Hilera nueva para reemplazar
+     */
     public void modificarHilera(int i, int j, Hilera t) {
         Dnode p, q;
         int k = 1;
@@ -261,15 +267,13 @@ public class Hilera extends Dlist {
 
         tp = t.getFirstNode();
         aux = p.getLi();
-        
 
         while (k <= j) {
 
             if (p == getFirstNode()) {
-               this.setFirstNode(p.getLd());
+                this.setFirstNode(p.getLd());
                 this.getFirstNode().setLi(null);
-                
-              
+
             } else {
                 this.disconnect(p);
             }
@@ -279,7 +283,7 @@ public class Hilera extends Dlist {
 
         while (!isTheEnd(tp)) {
             Dnode x = new Dnode(tp.getDato());
-           
+
             connect(x, aux);
             tp = tp.getLd();
             aux = x;

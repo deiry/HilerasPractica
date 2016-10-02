@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Controlador.Validaciones;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
@@ -104,13 +105,10 @@ public class VistaAnagrama extends javax.swing.JPanel {
                                 .addComponent(cuadroAnagrama, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(botonAnagrama, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel10))
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel1))
                         .addGap(0, 67, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,9 +134,10 @@ public class VistaAnagrama extends javax.swing.JPanel {
 
     private void cuadroAnagramaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cuadroAnagramaKeyTyped
         // TODO add your handling code here:
-        if (!Character.isDigit(evt.getKeyChar())) {
+        if (!Validaciones.letras(evt.getKeyChar())){
             evt.consume();
         }
+        
     }//GEN-LAST:event_cuadroAnagramaKeyTyped
 
 

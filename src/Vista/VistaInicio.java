@@ -43,7 +43,6 @@ public class VistaInicio extends javax.swing.JFrame {
         this.setForeground(Color.red);
         initComponents();
         contTab = 0;
-
         panel = new JTabbedPane();
         vistaInsert = new VistaInsertar();
         vistaEliminar = new VistaEliminar();
@@ -53,17 +52,8 @@ public class VistaInicio extends javax.swing.JFrame {
         vistaSub = new VistaSubhilera();
         vistaPalindromo = new VistaPalindromo();
         vistaAnagrama = new VistaAnagrama();
-
+        addTab();
         panel.setBackground(Color.white);
-        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/insert.png")), vistaInsert, "Insertar Hilera");
-        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/modify.png")), vistaModificar, "Modificar Hilera");
-        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/delete.png")), vistaEliminar, "Eliminar Hilera");
-        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/ordenar2.png")), vistaOrdenar, "Ordenar Hilera");
-        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/anagrama2.png")), vistaAnagrama, "Verificar si Hilera es anagrama");
-        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/palindro2.png")), vistaPalindromo, "Verificar Hilera si es palindromo");
-        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/reverse2.png")), vistaInvertir, "Invertir Hilera");
-        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/subHilera2.png")), vistaSub, "Extraer SubHilera");
-        panel.setSelectedIndex(contTab);
 
         evtNext = new MouseAdapter() {
 
@@ -78,18 +68,31 @@ public class VistaInicio extends javax.swing.JFrame {
         };
 
         evtBefore = new MouseAdapter() {
-
             public void mouseClicked(MouseEvent e) {
-                contTab = panel.getSelectedIndex()-1;
-               
+                contTab = panel.getSelectedIndex() - 1;
                 panel.setSelectedIndex(contTab);
             }
         };
         iniciarEventos();
         this.panelMundo.add(panel);
-
     }
-
+    /**
+     * Metodo que añade las pestañas al Objeto JTabbed Panel 
+     */
+    public void addTab() {
+        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/insert.png")), vistaInsert, "Insertar Hilera");
+        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/modify.png")), vistaModificar, "Modificar Hilera");
+        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/delete.png")), vistaEliminar, "Eliminar Hilera");
+        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/ordenar2.png")), vistaOrdenar, "Ordenar Hilera");
+        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/anagrama2.png")), vistaAnagrama, "Verificar si Hilera es anagrama");
+        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/palindro2.png")), vistaPalindromo, "Verificar Hilera si es palindromo");
+        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/reverse2.png")), vistaInvertir, "Invertir Hilera");
+        panel.addTab("", new ImageIcon(getClass().getResource("/Vista/Recursos/subHilera2.png")), vistaSub, "Extraer SubHilera");
+        panel.setSelectedIndex(contTab);
+    }
+    /**
+     * Inicializa los eventos para avanzar a la siguiente pestaña
+     */
     public void iniciarEventos() {
 
         vistaInsert.getNext().addMouseListener(evtNext);
@@ -106,11 +109,6 @@ public class VistaInicio extends javax.swing.JFrame {
         vistaSub.getBefore().addMouseListener(evtBefore);
         vistaPalindromo.getBefore().addMouseListener(evtBefore);
         vistaAnagrama.getBefore().addMouseListener(evtBefore);
-    }
-
-    public void paintPanel() {
-        this.panelMundo.repaint();
-        this.panelMundo.revalidate();
     }
 
     /**
@@ -182,7 +180,7 @@ public class VistaInicio extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         panelMundo.setBackground(new java.awt.Color(255, 255, 255));
@@ -202,10 +200,10 @@ public class VistaInicio extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelMundo, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(panelMundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         pack();
@@ -438,7 +436,6 @@ public class VistaInicio extends javax.swing.JFrame {
     public JButton retornaBotoEjecutarSubString() {
         return vistaSub.retornaBotoEjecutarSubString();
     }
-
 
     /**
      * Metodo que retorna el cuadro de texto para agregar una hilera a la lista

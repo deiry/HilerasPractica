@@ -47,6 +47,7 @@ public class VistaEliminar extends javax.swing.JPanel {
         before = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(480, 370));
 
         jLabel4.setText("Eliminar Hilera Completa?");
 
@@ -135,7 +136,7 @@ public class VistaEliminar extends javax.swing.JPanel {
                 .addComponent(RespuestaBorrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(52, Short.MAX_VALUE)
                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -154,7 +155,7 @@ public class VistaEliminar extends javax.swing.JPanel {
                     .addComponent(RespuestaBorrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(next)
                     .addComponent(before)))
@@ -163,7 +164,7 @@ public class VistaEliminar extends javax.swing.JPanel {
 
     private void valInicialKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valInicialKeyTyped
         // TODO add your handling code here:
-        if(Validaciones.numeros(evt.getKeyChar()))
+        if(!Validaciones.numeros(evt.getKeyChar()))
         {
             evt.consume();
         }
@@ -171,7 +172,7 @@ public class VistaEliminar extends javax.swing.JPanel {
 
     private void numerElementosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numerElementosKeyTyped
         // TODO add your handling code here:
-        if(Validaciones.numeros(evt.getKeyChar()))
+        if(!Validaciones.numeros(evt.getKeyChar()))
         {
             evt.consume();
         }
