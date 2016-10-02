@@ -6,15 +6,36 @@ import java.awt.Component;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
+/**
+ * Clase para llevar el control entre el modelo y la vista. Aqui se llegan las
+ * respuesta del modelo.
+ *
+ * @author DEIRY
+ */
 public class controlador implements ActionListener {
 
-    //  private FormularioPrincipal view;
+    /**
+     * Atributo que será la hilera original
+     */
     private Hilera model;
+    /**
+     * Objeto de la vista para mostrar las respuestas
+     */
     private VistaInicio view;
+    /**
+     * Ventana para los avisos que se realizan al usuario a medida que navegue
+     * en la aplicacion
+     */
     private static JOptionPane option;
+    /**
+     * Atributo para realizar la asignacion del mensaje y titulo que será
+     * mostrará en la ventana JOPtionPane
+     */
     private static JDialog dialogo;
 
     /**
@@ -44,6 +65,7 @@ public class controlador implements ActionListener {
      * hacen parte de la clase FormularioPrincipal
      */
     public void cargarAtributos() {
+        JOptionPane.showMessageDialog(null, "", "Inicio", JOptionPane.INFORMATION_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/Controlador/bienvenido.png")));
         this.view.retornaBotonCargaString().setActionCommand("GuardaCadena");
         this.view.retornaBotonCargaString().addActionListener(this);
         this.view.retornaBotonAgregar().setActionCommand("AgregarHilera");
@@ -73,6 +95,59 @@ public class controlador implements ActionListener {
     public void mostrar() {
         this.view.setLocationRelativeTo(null);
         this.view.setVisible(true);
+    }
+
+    /**
+     * Metodo que captura evento tipo ActionListener,ejecuta con base al objeto
+     * que invoca el metodo
+     *
+     * @param e objeto que recibe el evento de la interfaz FormularioPrincipal
+     */
+    public void actionPerformed(ActionEvent e) {
+
+        String comando = e.getActionCommand();
+        if (comando.equals("GuardaCadena")) //Guarda String como lista doble
+        {
+            insertarCadena();
+        }
+
+        if (comando.equals("AgregarHilera")) {
+            agregarHilera();
+        }
+
+        if (comando.equals("PreguntaBorrado"))///Borra Strin...o parte de el
+        {
+            preguntaBorrado();
+
+        }
+
+        if (comando.equals("BorrarCharHilera")) {
+            borrarHilera();
+        }
+
+        if (comando.equals("ValidePalindromo")) {
+            validarPalindromo();
+        }
+
+        if (comando.equals("OrdenarLIsta")) {
+            ordenarHilera();
+        }
+
+        if (comando.equals("ValidarAnagrama")) {
+            validraAnagrama();
+        }
+
+        if (comando.equals("InvertirHilera")) {
+            invertirHilera();
+        }
+
+        if (comando.equals("ModificarHilera")) {
+            modificarHilera();
+        }
+
+        if (comando.equals("EjecutarSubString")) {
+            extraerSubhilera();
+        }
     }
 
     /**
@@ -119,17 +194,17 @@ public class controlador implements ActionListener {
     public void agregarHilera() {
         String cadenaNueva = this.view.retornaCuadroAgregar().getText();
         if (cadenaNueva.isEmpty()) {
-            visualizarDialog(view, "Campo vacio", "Error", 100, JOptionPane.ERROR_MESSAGE);
+            visualizarDialog(view, "Campo vacio", "Error", 1000, JOptionPane.ERROR_MESSAGE);
             return;
         }
-        visualizarDialog(view, "Agregando hilera", "Aviso", 100, JOptionPane.INFORMATION_MESSAGE);
+        visualizarDialog(view, "Agregando hilera", "Aviso", 1000, JOptionPane.INFORMATION_MESSAGE);
         model.insertHilera(cadenaNueva);
         this.view.retornaAreaVisualizacion().append(model.imprimirLd());
     }
 
     /**
      * Metodo para cuando el usuario seleccione del combo box para la opcion
-     * eliminar
+     * eliminar la hilera
      */
     public void preguntaBorrado() {
         if (this.view.retornaComboBorrado().getSelectedIndex() == 1) {
@@ -257,8 +332,9 @@ public class controlador implements ActionListener {
     }
 
     /**
-     * Metodo que se ejecuta cuando hay un evento en el boton de la vista modificar hilera
-     * que de acuerdo a los parametros ingresados valida si todo esta correcto, para luego ordenar la hilera si está correcto
+     * Metodo que se ejecuta cuando hay un evento en el boton de la vista
+     * modificar hilera que de acuerdo a los parametros ingresados valida si
+     * todo esta correcto, para luego ordenar la hilera si está correcto
      */
     public void modificarHilera() {
         String pos = this.view.retornaPosModificar().getText();
@@ -284,99 +360,49 @@ public class controlador implements ActionListener {
             visualizarDialog(view, "Campo vacio", "Error", 1000, JOptionPane.ERROR_MESSAGE);
         }
     }
-    
+
     /**
-     * Metodo que se ejecuta cuando hay  evento en el boton de vista subhilera, donde hace las respectivas validaciones antes de
-     * extraer la subhilera de acuerdo a los parametros.
+     * Metodo que se ejecuta cuando hay evento en el boton de vista subhilera,
+     * donde hace las respectivas validaciones antes de extraer la subhilera de
+     * acuerdo a los parametros.
      */
-    
-    public void extraerSubhilera(){
-         String pos = this.view.retornaPosicionInicialSubString().getText();
-            String cant = this.view.retornaNumPosicionesSubString().getText();
+    public void extraerSubhilera() {
+        String pos = this.view.retornaPosicionInicialSubString().getText();
+        String cant = this.view.retornaNumPosicionesSubString().getText();
 
-            if (!(pos.isEmpty()) && !(cant.isEmpty())) {
-                int i = Integer.parseInt(pos);
-                int j = Integer.parseInt(cant);
-                if (i > 0 && j > 0) {
-                    Hilera aux;
-                    aux = model.subString(i, j);
-                    if (aux == null) {
-                        visualizarDialog(view, "Fallaron parametros", "Error", 1500, JOptionPane.ERROR_MESSAGE);
-                    } else {
-                        visualizarDialog(view, "SubHilera: " + aux.imprimirLd(), "Error", 1500, JOptionPane.INFORMATION_MESSAGE);
-
-                        this.view.retornaAreaVisualizacion().append("Original" + model.imprimirLd());
-                        this.view.retornaAreaVisualizacion().append("SubString " + aux.imprimirLd());
-                    }
+        if (!(pos.isEmpty()) && !(cant.isEmpty())) {
+            int i = Integer.parseInt(pos);
+            int j = Integer.parseInt(cant);
+            if (i > 0 && j > 0) {
+                Hilera aux;
+                aux = model.subString(i, j);
+                if (aux == null) {
+                    visualizarDialog(view, "Fallaron parametros", "Error", 1500, JOptionPane.ERROR_MESSAGE);
                 } else {
-                    visualizarDialog(view, "Ingrese numeros positivos", "Error", 1500, JOptionPane.ERROR_MESSAGE);
+                    visualizarDialog(view, "SubHilera: " + aux.imprimirLd(), "Error", 1500, JOptionPane.INFORMATION_MESSAGE);
+
+                    this.view.retornaAreaVisualizacion().append("Original" + model.imprimirLd());
+                    this.view.retornaAreaVisualizacion().append("SubString " + aux.imprimirLd());
                 }
             } else {
-                visualizarDialog(view, "Campo vacio", "Error", 1500, JOptionPane.ERROR_MESSAGE);
-
+                visualizarDialog(view, "Ingrese numeros positivos", "Error", 1500, JOptionPane.ERROR_MESSAGE);
             }
+        } else {
+            visualizarDialog(view, "Campo vacio", "Error", 1500, JOptionPane.ERROR_MESSAGE);
+
+        }
     }
 
     /**
-     * Metodo que captura evento tipo ActionListener,ejecuta con base al objeto
-     * que invoca el metodo
+     * Metodo que ejecuta una ventana por determinado tiempo para mostar de
+     * acuerdo a los parametros ingresados y luego cerrarse automaticamente
      *
-     * @param e objeto que recibe el evento de la interfaz FormularioPrincipal
+     * @param padre Componente donde se va a mostrar el JOptionPane
+     * @param texto Texto para mostrar
+     * @param titulo Titulo de la ventana
+     * @param timeOut Tiempo para mostrar la ventana
+     * @param type Tipo de ventan, muestra el icono de la ventana
      */
-    public void actionPerformed(ActionEvent e) {
-
-        String comando = e.getActionCommand();
-        if (comando.equals("GuardaCadena")) //Guarda String como lista doble
-        {
-            insertarCadena();
-        }
-
-        if (comando.equals("AgregarHilera")) {
-            agregarHilera();
-        }
-
-        if (comando.equals("PreguntaBorrado"))///Borra Strin...o parte de el
-        {
-            preguntaBorrado();
-
-        }
-
-        if (comando.equals("BorrarCharHilera")) {
-            borrarHilera();
-        }
-
-        if (comando.equals("ValidePalindromo")) {
-            validarPalindromo();
-        }
-
-        if (comando.equals("OrdenarLIsta")) {
-            ordenarHilera();
-        }
-
-        if (comando.equals("ValidarAnagrama")) {
-            validraAnagrama();
-        }
-
-        if (comando.equals("InvertirHilera")) {
-            invertirHilera();
-        }
-
-        if (comando.equals("ModificarHilera")) {
-            modificarHilera();
-        }
-
-        if (comando.equals("EjecutarSubString")) {
-           extraerSubhilera();
-        }
-    }
-/**
- * Metodo que ejecuta una ventana por determinado tiempo para mostar de acuerdo a los parametros ingresados y luego cerrarse automaticamente
- * @param padre Componente donde se va a mostrar el JOptionPane 
- * @param texto Texto para mostrar 
- * @param titulo Titulo de la ventana
- * @param timeOut Tiempo para mostrar la ventana
- * @param type Tipo de ventan, muestra el icono de la ventana
- */
     public void visualizarDialog(Component padre, String texto, String titulo, final long timeOut, int type) {
         option.setMessage(texto);
         option.setMessageType(type);
