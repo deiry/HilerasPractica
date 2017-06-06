@@ -10,5 +10,7 @@ Su programa debe tener la cualidad de aceptar como entrada hilera cualquiera, y 
 + Determinar si la hilera original es substring de otra hilera entrada por pantalla, o viceversa, es decir, si la hilera entrada por pantalla es substring de la hilera original. (Si la hilera inicial es hola, y el substring ingresado por el usuario es ol, entonces el programa debe mostrar un mensaje indicando que ol es un substring de hola)
 + Determinar si la hilera constituye un palíndromo o no
 + Determinar si la hilera es anagrama de otra (Si las hileras son salta y atlas, el sistema debe mostrar un mensaje indicando que son anagramas)
+
 Ver enunciado completo anexo.
+
 Proyecto realizado por Carlos Alberto Benavidez y Deiry Sofía Navas Muriel
